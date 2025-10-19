@@ -1,0 +1,136 @@
+nav {
+    position: fixed;
+    width: 100%;
+    top: 0;
+    z-index: 1000;
+    background: rgba(5, 8, 20, 0.85);
+    backdrop-filter: blur(15px);
+    border-bottom: 1px solid rgba(0, 212, 255, 0.2);
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.5);
+}
+
+nav .container {
+    max-width: 1400px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 2rem;
+}
+
+.logo-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.logo-svg {
+    width: 55px;
+    height: 55px;
+    animation: logoFloat 3s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(0, 212, 255, 0.5));
+    transition: all 0.3s;
+    border-radius: 50%;
+}
+
+.logo-svg:hover {
+    filter: drop-shadow(0 0 20px rgba(0, 212, 255, 0.8));
+    transform: scale(1.1);
+}
+
+@keyframes logoFloat {
+    0%, 100% { transform: translateY(0px); }
+    50% { transform: translateY(-8px); }
+}
+
+.logo {
+    font-size: 1.8rem;
+    font-weight: 900;
+    background: linear-gradient(135deg, #0066ff 0%, #00d4ff 50%, #0066ff 100%);
+    background-size: 200% 200%;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: gradientShift 3s ease infinite;
+    letter-spacing: 2px;
+}
+
+@keyframes gradientShift {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+nav ul {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+}
+
+nav a {
+    color: #f8f9fa;
+    text-decoration: none;
+    transition: all 0.3s;
+    font-weight: 600;
+    position: relative;
+    padding: 0.5rem 0;
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: linear-gradient(135deg, #0066ff 0%, #00d4ff 50%, #0066ff 100%);
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+nav a:hover {
+    color: #00d4ff;
+}
+
+.mobile-menu-btn {
+    display: none;
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.8rem;
+    cursor: pointer;
+    width: auto;
+    padding: 0.5rem;
+    transition: all 0.3s;
+}
+
+.mobile-menu-btn:hover {
+    color: #00d4ff;
+}
+
+@media (max-width: 768px) {
+    .mobile-menu-btn {
+        display: block;
+    }
+
+    nav ul {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background: rgba(5, 8, 20, 0.98);
+        flex-direction: column;
+        padding: 2rem;
+        gap: 1.5rem;
+        border-bottom: 1px solid rgba(0, 212, 255, 0.3);
+    }
+
+    nav ul.active {
+        display: flex;
+    }
+}
